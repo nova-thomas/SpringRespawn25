@@ -9,8 +9,9 @@ public class StraightLine : EnemyBase
     {
         Type = 1;
         Health = 3;
-        Speed = 1;
-        RoF = 2f;
+        Speed = 6;
+        RoF = 1f;
+        canShoot = true;
     }
 
     // Update is called once per frame
@@ -18,7 +19,9 @@ public class StraightLine : EnemyBase
     {
         if (canShoot)
         {
-            GameObject temp = Instantiate(Bullet, transform.position, transform.rotation);
+            GameObject temp = Instantiate(Bullet, transform.position, Quaternion.identity);
+            temp.GetComponent<EnemyBullet>().speed = Speed;
+            temp.GetComponent<EnemyBullet>().transform.rotation = transform.rotation;
             canShoot = false;
             StartCoroutine(Reload());
         }

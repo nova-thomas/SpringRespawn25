@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     public float speed;
     public float lifetime = 5f;
+    public float timer = 0f;
     public Vector2 StartPos;
 
     // Start is called before the first frame update
@@ -18,13 +19,14 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Movement() + StartPos;
+        timer += Time.deltaTime;
+        transform.position = Movement(timer);
     }
 
-    public Vector2 Movement()
+    public Vector2 Movement(float timer)
     {
-        float newX = transform.position.x * speed * Time.deltaTime;
-        float newY = transform.position.x * speed * Time.deltaTime;
-        return new Vector2(newX, newY);
+        float newX = transform.up.x * speed * timer;
+        float newY = transform.up.y * speed * timer;
+        return new Vector2(newX+StartPos.x, newY+StartPos.y);
     }
 }
