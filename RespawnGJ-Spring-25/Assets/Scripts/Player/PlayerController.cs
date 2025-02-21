@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ExplodeBomb(GameObject bomb)
     {
-        yield return new WaitForSeconds(2f); //2 sec can be changed
+        yield return new WaitForSeconds(2f); 
 
 
         float explosionRadius = 2f;
@@ -143,15 +143,15 @@ public class PlayerController : MonoBehaviour
     private void ActivateShield()
     {
         GameObject shield = Instantiate(shieldPrefab, transform.position, Quaternion.identity);
-        shield.transform.SetParent(transform); // Make shield follow the player
-        shieldAmount--; // Reduce shield count
+        shield.transform.SetParent(transform); 
+        shieldAmount--;
         StartCoroutine(DeactivateShield(shield));
     }
 
     private IEnumerator DeactivateShield(GameObject shield)
     {
-        yield return new WaitForSeconds(3f); // Shield lasts for 3 seconds
-        Destroy(shield); // Remove the shield
+        yield return new WaitForSeconds(3f); 
+        Destroy(shield); 
     }
 
     public void EnemyDefeated()
