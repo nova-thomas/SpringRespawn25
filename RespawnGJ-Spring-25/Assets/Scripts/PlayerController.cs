@@ -6,9 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public GameObject bulletPrefab;
-    public Transform frontPoint; // Assign this in the inspector
+    public Transform frontPoint; 
     public float fireRate = 0.2f;
-    public Transform cameraTransform; // Assign the main camera transform
+    public Transform cameraTransform; 
     public float cameraSmoothSpeed = 5f;
 
     private Vector2 moveDirection;
@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
         moveDirection = (mousePosition - (Vector2)transform.position).normalized;
         transform.position += (Vector3)moveDirection * moveSpeed * Time.deltaTime;
 
-        // Rotate towards movement direction
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
