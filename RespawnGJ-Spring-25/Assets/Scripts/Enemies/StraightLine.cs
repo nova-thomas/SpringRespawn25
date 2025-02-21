@@ -10,7 +10,7 @@ public class StraightLine : EnemyBase
         Type = 1;
         Health = 3;
         Speed = 1;
-        RoF = .2f;
+        RoF = 2f;
     }
 
     // Update is called once per frame
