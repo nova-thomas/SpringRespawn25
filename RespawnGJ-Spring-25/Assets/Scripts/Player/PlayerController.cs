@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public int health = 3;
     public float moveSpeed = 5f;
     public GameObject bulletPrefab;
+    
     public Transform frontPoint; 
     public float fireRate = 0.2f;
     private Vector2 moveDirection;
@@ -26,6 +27,12 @@ public class PlayerController : MonoBehaviour
     public TMP_Text levelText;
     public Slider progressBar;
 
+    public int shieldAmount = 0;
+    public int bombAmount = 0;
+    public GameObject bombPrefab;
+    public GameObject shieldPrefab;
+    public TMP_Text shieldText;
+    public TMP_Text bombText;
     private void Start()
     {
         mainCamera = Camera.main;
@@ -90,6 +97,62 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(fireRate);
         }
     }
+    public void OnBombPlace(InputAction.CallbackContext context)
+    {
+        if (context.started && bombAmount > 0)
+        {
+            PlaceBomb();
+        }
+    }
+
+    private void PlaceBomb()
+    {
+        GameObject bomb = Instantiate(bombPrefab, transform.position, Quaternion.identity);
+        bombAmount--; 
+        StartCoroutine(ExplodeBomb(bomb));
+    }
+
+    private IEnumerator ExplodeBomb(GameObject bomb)
+    {
+        yield return new WaitForSeconds(2f); //2 sec can be changed
+
+
+        float explosionRadius = 2f;
+        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(bomb.transform.position, explosionRadius);
+
+        foreach (Collider2D enemy in enemiesHit)
+        {
+            if (enemy.CompareTag("Enemy"))
+            {
+                Destroy(enemy.gameObject); 
+            }
+        }
+
+        Destroy(bomb); 
+    }
+
+   
+    public void OnShieldActivate(InputAction.CallbackContext context)
+    {
+        if (context.started && shieldAmount > 0)
+        {
+            ActivateShield();
+        }
+    }
+
+    private void ActivateShield()
+    {
+        GameObject shield = Instantiate(shieldPrefab, transform.position, Quaternion.identity);
+        shield.transform.SetParent(transform); // Make shield follow the player
+        shieldAmount--; // Reduce shield count
+        StartCoroutine(DeactivateShield(shield));
+    }
+
+    private IEnumerator DeactivateShield(GameObject shield)
+    {
+        yield return new WaitForSeconds(3f); // Shield lasts for 3 seconds
+        Destroy(shield); // Remove the shield
+    }
 
     public void EnemyDefeated()
     {
@@ -120,6 +183,14 @@ public class PlayerController : MonoBehaviour
         {
             progressBar.maxValue = enemiesToNextLevel;
             progressBar.value = enemiesDefeated;
+        }
+        if (bombText != null)
+        {
+            bombText.text = bombAmount.ToString();
+        }
+        if (shieldText != null)
+        {
+            shieldText.text = shieldAmount.ToString();
         }
     }
 }

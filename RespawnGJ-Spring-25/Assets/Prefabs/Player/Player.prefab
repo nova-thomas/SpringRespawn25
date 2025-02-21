@@ -212,10 +212,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 717d76249da5ce848944c794ad21ef07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
+  health: 3
   moveSpeed: 5
   bulletPrefab: {fileID: 8139724444477631083, guid: 571e673081287fd4688a7b26e06506f4, type: 3}
   frontPoint: {fileID: 3309880959850613956}
   fireRate: 0.2
+  cameraTransform: {fileID: 0}
+  cameraSmoothSpeed: 5
+  levelText: {fileID: 0}
+  progressBar: {fileID: 0}
+  shieldAmount: 0
+  bombAmount: 0
+  bombPrefab: {fileID: 4414605932448724033, guid: c36cd72c49a3d2e408996cf36b7387af, type: 3}
+  shieldPrefab: {fileID: 2616911041000835014, guid: 64a2f7678fec0ac45b244cd2b5e4e7ea, type: 3}
 --- !u!114 &5001953206706217340
 MonoBehaviour:
   m_ObjectHideFlags: 0
