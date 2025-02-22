@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 8747232907773551864}
   - component: {fileID: 3898588810139941356}
   - component: {fileID: 2268307359953082827}
-  - component: {fileID: 5341852432236737790}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Wall
@@ -206,15 +205,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &5341852432236737790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2616911041000835014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a77360b171d7a14ab21d00433fbc196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
