@@ -7,20 +7,19 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public int level = 1;
-    public int health = 3;
+    public int health = 10; 
     public float moveSpeed = 5f;
     public GameObject bulletPrefab;
-    
-    public Transform frontPoint; 
+
+    public Transform frontPoint;
     public float fireRate = 0.2f;
     private Vector2 moveDirection;
 
-    public Transform cameraTransform; 
+    public Transform cameraTransform;
     public float cameraSmoothSpeed = 5f;
     private Camera mainCamera;
     private Coroutine shootingCoroutine;
     private bool isShooting;
-
 
     private int enemiesDefeated = 0;
     private int enemiesToNextLevel;
@@ -37,13 +36,24 @@ public class PlayerController : MonoBehaviour
     public AudioClip itemSound;
     public AudioClip bombCountdownSound;
     public AudioClip bombExplosionSound;
+    public AudioClip deathSound; 
 
     private AudioSource audioSource;
+
+    [Header("Health UI")]
+    public Image[] heartImages; 
+    public Sprite fullHeart;
+    public Sprite halfHeart;
+
+    [Header("Death Screen")]
+    public GameObject deathScreenCanvas; 
+
     private void Start()
     {
         mainCamera = Camera.main;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+
         if (rb != null)
         {
             rb.gravityScale = 0;
@@ -51,7 +61,12 @@ public class PlayerController : MonoBehaviour
 
         enemiesToNextLevel = level * 2;
         UpdateUI();
+        UpdateHealthUI();
 
+        if (deathScreenCanvas != null)
+        {
+            deathScreenCanvas.SetActive(false); // Hide death screen at the start
+        }
     }
 
     private void Update()
@@ -105,6 +120,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(fireRate);
         }
     }
+
     public void OnBombPlace(InputAction.CallbackContext context)
     {
         if (context.started && bombAmount > 0)
@@ -120,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
         if (audioSource != null && bombCountdownSound != null)
         {
-            audioSource.PlayOneShot(bombCountdownSound); 
+            audioSource.PlayOneShot(bombCountdownSound);
         }
 
         StartCoroutine(ExplodeBomb(bomb));
@@ -128,7 +144,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ExplodeBomb(GameObject bomb)
     {
-        yield return new WaitForSeconds(2f); 
+        yield return new WaitForSeconds(2f);
 
         if (audioSource != null && bombExplosionSound != null)
         {
@@ -151,8 +167,6 @@ public class PlayerController : MonoBehaviour
         Destroy(bomb);
     }
 
-
-
     public void OnShieldActivate(InputAction.CallbackContext context)
     {
         if (context.started && shieldAmount > 0)
@@ -164,15 +178,15 @@ public class PlayerController : MonoBehaviour
     private void ActivateShield()
     {
         GameObject shield = Instantiate(shieldPrefab, transform.position, Quaternion.identity);
-        shield.transform.SetParent(transform); 
+        shield.transform.SetParent(transform);
         shieldAmount--;
         StartCoroutine(DeactivateShield(shield));
     }
 
     private IEnumerator DeactivateShield(GameObject shield)
     {
-        yield return new WaitForSeconds(3f); 
-        Destroy(shield); 
+        yield return new WaitForSeconds(3f);
+        Destroy(shield);
     }
 
     public void EnemyDefeated()
@@ -215,11 +229,70 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TakeDamage()
+    {
+        health -= 1;
+        UpdateHealthUI();
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+
+        if (audioSource != null && deathSound != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+        }
+
+        Time.timeScale = 0f;
+
+        if (deathScreenCanvas != null)
+        {
+            deathScreenCanvas.SetActive(true);
+        }
+    }
+
+    private void UpdateHealthUI()
+    {
+        for (int i = 0; i < heartImages.Length; i++)
+        {
+            int heartValue = (i + 1) * 2; 
+
+            if (health >= heartValue)
+            {
+                heartImages[i].sprite = fullHeart;
+                heartImages[i].enabled = true;
+            }
+            else if (health == heartValue - 1)
+            {
+                heartImages[i].sprite = halfHeart;
+                heartImages[i].enabled = true;
+            }
+            else
+            {
+                heartImages[i].enabled = false; 
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyBullet"))
+        {
+            TakeDamage();
+            Destroy(collision.gameObject);
+        }
+    }
+
     public void PlayItemPickupSound()
     {
         if (audioSource != null)
         {
-            audioSource.PlayOneShot(itemSound); 
+            audioSource.PlayOneShot(itemSound);
         }
     }
 }
