@@ -10,8 +10,15 @@ public class Ring : EnemyBase
         Type = 2;
         Health = 3;
         Speed = 4;
-        RoF = 2f;
-        canShoot = true;
+        started = false;
+        canShoot = false;
+
+        // Get BPM from LevelManager
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        if (levelManager != null)
+        {
+            RoF = levelManager.GetComponent<LevelManagerScript>().beatInterval;
+        }
     }
 
     // Update is called once per frame

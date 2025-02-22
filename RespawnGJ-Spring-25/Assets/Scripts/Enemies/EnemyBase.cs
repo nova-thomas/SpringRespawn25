@@ -21,15 +21,7 @@ public class EnemyBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        started = false;
-        canShoot = false;
-
-        // Get BPM from LevelManager
-        levelManager = GameObject.FindGameObjectWithTag("LevelManager");
-        if (levelManager != null)
-        {
-            RoF = levelManager.GetComponent<LevelManagerScript>().beatInterval;
-        }
+        
     }
 
     public IEnumerator Reload()
