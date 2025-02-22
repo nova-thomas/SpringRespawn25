@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7016428052455419661}
   - component: {fileID: 2057781147909515189}
   - component: {fileID: 6435935433152593057}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2270493520557865288}
   - component: {fileID: 866220258520110652}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7921437558345138511}
   - component: {fileID: 5999093221655509852}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

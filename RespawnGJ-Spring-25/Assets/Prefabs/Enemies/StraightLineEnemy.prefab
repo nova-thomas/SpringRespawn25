@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2303550757271082201}
   - component: {fileID: 2669911920745818322}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 92028754281682477}
   - component: {fileID: 2792967739824353009}
   - component: {fileID: 2861550286700104630}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StraightLineEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5323979692306571220}
   - component: {fileID: 3709481868634107431}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
