@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     public GameObject menuPanel;
+    public GameObject tutorialPanel;
     public GameObject creditsPanel;
 
     public AudioClip menuMusic;
@@ -24,6 +25,10 @@ public class MenuManager : MonoBehaviour
         {
             menuPanel.SetActive(true); // Ensure credits panel is hidden at start
         }
+        if (tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(false);
+        }
 
         // Initialize and play menu music
         audioSource = gameObject.AddComponent<AudioSource>();
@@ -37,6 +42,18 @@ public class MenuManager : MonoBehaviour
     {
         audioSource.Stop();
         SceneManager.LoadScene("Game");
+    }
+
+    public void OnTutorial()
+    {
+        if (tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(!tutorialPanel.activeSelf);
+        }
+        if (menuPanel != null)
+        {
+            menuPanel.SetActive(!menuPanel.activeSelf);
+        }
     }
 
     public void OnCredits()
