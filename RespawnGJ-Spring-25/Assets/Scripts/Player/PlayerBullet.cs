@@ -5,7 +5,7 @@ public class PlayerBullet : MonoBehaviour
     public float speed = 10f;
     public float lifetime = 7f;
     public PlayerController playerController;
-    public GameObject itemPickupPrefab; 
+    public GameObject itemPickupPrefab;
 
     private void Start()
     {
@@ -22,18 +22,16 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            if (playerController != null)
+            if (playerController != null)// Change to check level manager number of enemies
             {
-                playerController.EnemyDefeated();
+                playerController.EnemyDefeated(); 
             }
 
-            //40% chance
+            //40% chance ------ put in enemy script for drop function
             if (Random.value < 0.6f && itemPickupPrefab != null)
             {
                 Instantiate(itemPickupPrefab, collision.transform.position, Quaternion.identity);
             }
-
-            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
         else if (collision.CompareTag("Wall"))

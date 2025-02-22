@@ -12,8 +12,15 @@ public class StraightLine : EnemyBase
         Type = 1;
         Health = 1;
         Speed = 6;
-        RoF = 1f;
-        canShoot = true;
+        started = false;
+        canShoot = false;
+
+        // Get BPM from LevelManager
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        if (levelManager != null)
+        {
+            RoF = levelManager.GetComponent<LevelManagerScript>().beatInterval * 2;
+        }
     }
 
     // Update is called once per frame
@@ -28,6 +35,7 @@ public class StraightLine : EnemyBase
 
             if (Health <= 0)
             {
+                levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
                 Destroy(gameObject);
             }
 

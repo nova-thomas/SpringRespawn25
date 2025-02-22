@@ -208,9 +208,9 @@ public class PlayerController : MonoBehaviour
         Destroy(shield);
     }
 
-    public void EnemyDefeated()
+    public void EnemyDefeated() 
     {
-        enemiesDefeated++;
+        enemiesDefeated++; // Change this to instead check for level manager levels
 
         if (enemiesDefeated >= enemiesToNextLevel)
         {
@@ -220,8 +220,8 @@ public class PlayerController : MonoBehaviour
 
     private void LevelUp()
     {
-        level++;
-        enemiesDefeated = 0;
+        level++; // Remove
+        enemiesDefeated = 0; // Change to check Level Manager
         enemiesToNextLevel = level * 2;
         UpdateUI();
     }
