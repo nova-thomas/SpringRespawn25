@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StraightLine : EnemyBase
 {
+    public GameObject Player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,17 @@ public class StraightLine : EnemyBase
             temp.GetComponent<EnemyBullet>().transform.rotation = transform.rotation;
             canShoot = false;
             StartCoroutine(Reload());
+        }
+
+        if (Player == null)
+        {
+            Player = GameObject.FindGameObjectWithTag("Player");
+        }
+        else
+        {
+            Vector3 direction = Player.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x);
+            transform.rotation = Quaternion.EulerAngles(0,0,angle-90*Mathf.Deg2Rad);
         }
     }
 }
