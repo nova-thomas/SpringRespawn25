@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spinning : EnemyBase
 {
+    public GameObject levelManager;
     // Start is called before the first frame update
     void Start()
     {

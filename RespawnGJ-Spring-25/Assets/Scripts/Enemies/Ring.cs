@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ring : EnemyBase
 {
+    public GameObject levelManager;
     // Start is called before the first frame update
     void Start()
     {

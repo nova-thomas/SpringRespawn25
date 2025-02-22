@@ -15,22 +15,10 @@ public class EnemyBase : MonoBehaviour
     public GameObject Item;
     public bool started;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        started = false;
-    }
-
     public IEnumerator Reload()
     {
         yield return new WaitForSeconds(RoF);
         canShoot = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
