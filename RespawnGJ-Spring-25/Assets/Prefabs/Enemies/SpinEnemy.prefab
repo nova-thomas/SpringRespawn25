@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5005228751233360116}
   - component: {fileID: 6226379966297198638}
   - component: {fileID: 7333193027096986673}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpinEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2489209025488628241}
   - component: {fileID: 3824101234701908509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3993383650637477126}
   - component: {fileID: 9040463793980736347}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

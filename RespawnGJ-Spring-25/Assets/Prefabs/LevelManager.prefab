@@ -54,4 +54,3 @@ MonoBehaviour:
   levelEnemies: []
   player: {fileID: 0}
   backgroundMusic: {fileID: 8300000, guid: 6138525aba670104e868d80334cf4fff, type: 3}
-  SpawnIndicator: {fileID: 21300000, guid: 65f5d03cdaaf3b34592a374fd3990934, type: 3}

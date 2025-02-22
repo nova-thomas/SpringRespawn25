@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3309880959850613956}
   - component: {fileID: 3159543295685898470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5001953206706217340}
   - component: {fileID: 3551647945783380210}
   - component: {fileID: 6560541457324658702}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -232,6 +232,11 @@ MonoBehaviour:
   itemSound: {fileID: 8300000, guid: c108b1c2a39bbfc479046c1b2d79b1db, type: 3}
   bombCountdownSound: {fileID: 8300000, guid: e0a11ecd7c78d3d4c86b2fc15eebb491, type: 3}
   bombExplosionSound: {fileID: 8300000, guid: b70e94dc826f23044b3bef91cbb1ac58, type: 3}
+  deathSound: {fileID: 0}
+  heartImages: []
+  fullHeart: {fileID: 0}
+  halfHeart: {fileID: 0}
+  deathScreenCanvas: {fileID: 0}
 --- !u!114 &5001953206706217340
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,10 +35,13 @@ public class EnemyBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "PlayerBullet")
+        if(started)
         {
-            Destroy(collision.gameObject);
-            Health--;
+            if (collision.gameObject.tag == "PlayerBullet")
+            {
+                Destroy(collision.gameObject);
+                Health--;
+            }
         }
     }
 
