@@ -49,4 +49,13 @@ public class EnemyBase : MonoBehaviour
         canShoot = false;
         StartCoroutine(Reload());
     }
+
+    void OnDestroy()
+    {
+        GameObject levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        if (levelManager != null)
+        {
+            levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
+        }
+    }
 }
