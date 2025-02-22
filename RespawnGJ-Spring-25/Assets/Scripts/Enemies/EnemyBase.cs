@@ -35,7 +35,8 @@ public class EnemyBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(started)
+       
+        if (started)
         {
             if (collision.gameObject.tag == "PlayerBullet")
             {

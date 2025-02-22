@@ -48,9 +48,11 @@ public class PlayerController : MonoBehaviour
     [Header("UI Canvases")]
     public GameObject deathScreenCanvas;
     public GameObject mainCanvas;
+    private bool isDead = false;
 
     private void Start()
     {
+        isDead = false;
         mainCamera = Camera.main;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
@@ -83,6 +85,7 @@ public class PlayerController : MonoBehaviour
 
     private void FollowMouse()
     {
+        if (isDead) return;
         Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         moveDirection = (mousePosition - (Vector2)transform.position).normalized;
         transform.position += (Vector3)moveDirection * moveSpeed * Time.deltaTime;
@@ -136,7 +139,17 @@ public class PlayerController : MonoBehaviour
 
     private void PlaceBomb()
     {
-        GameObject bomb = Instantiate(bombPrefab, transform.position, Quaternion.identity);
+        Vector3 bombSpawnPosition = transform.position + (transform.right * 1.5f); 
+
+        GameObject bomb = Instantiate(bombPrefab, bombSpawnPosition, Quaternion.identity);
+
+        Rigidbody2D bombRb = bomb.GetComponent<Rigidbody2D>();
+        if (bombRb != null)
+        {
+            bombRb.gravityScale = 0;
+            bombRb.velocity = transform.right * 2f; 
+        }
+
         bombAmount--;
 
         if (audioSource != null && bombCountdownSound != null)
@@ -146,6 +159,7 @@ public class PlayerController : MonoBehaviour
 
         StartCoroutine(ExplodeBomb(bomb));
     }
+
 
     private IEnumerator ExplodeBomb(GameObject bomb)
     {
@@ -158,7 +172,7 @@ public class PlayerController : MonoBehaviour
             audioSource.volume = 0.75f;
         }
 
-        float explosionRadius = 2f;
+        float explosionRadius = 3f;
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(bomb.transform.position, explosionRadius);
 
         foreach (Collider2D enemy in enemiesHit)
@@ -166,9 +180,9 @@ public class PlayerController : MonoBehaviour
             if (enemy.CompareTag("Enemy"))
             {
                 Destroy(enemy.gameObject);
+                EnemyDefeated();
             }
         }
-
         Destroy(bomb);
     }
 
@@ -252,6 +266,8 @@ public class PlayerController : MonoBehaviour
         {
             audioSource.PlayOneShot(deathSound);
         }
+
+        isDead = true;
 
         Time.timeScale = 0f;
 
