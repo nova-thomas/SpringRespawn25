@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public GameObject levelManager;
+
     [Header("Health UI")]
     public Image[] heartImages; 
     public Sprite fullHeart;
@@ -56,6 +59,7 @@ public class PlayerController : MonoBehaviour
         mainCamera = Camera.main;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager");
         if (mainCanvas != null )
         {
             mainCanvas.SetActive(true);
@@ -81,6 +85,10 @@ public class PlayerController : MonoBehaviour
         UpdateUI();
         FollowMouse();
         FollowPlayerWithCamera();
+        if (enemiesDefeated >= enemiesToNextLevel)
+        {
+            LevelUp();
+        }
     }
 
     private void FollowMouse()
@@ -179,8 +187,10 @@ public class PlayerController : MonoBehaviour
         {
             if (enemy.CompareTag("Enemy"))
             {
-                Destroy(enemy.gameObject);
-                EnemyDefeated();
+                if (enemy.GetComponent<EnemyBase>().started == true)
+                {
+                    enemy.GetComponent<EnemyBase>().Health = 0;
+                }
             }
         }
         Destroy(bomb);
@@ -216,19 +226,14 @@ public class PlayerController : MonoBehaviour
 
     public void EnemyDefeated() 
     {
-        enemiesDefeated++; // Change this to instead check for level manager levels
-
-        if (enemiesDefeated >= enemiesToNextLevel)
-        {
-            LevelUp();
-        }
+        enemiesDefeated++;
     }
 
     private void LevelUp()
     {
-        level++; // Remove
-        enemiesDefeated = 0; // Change to check Level Manager
-        enemiesToNextLevel = level * 2;
+        level = levelManager.GetComponent<LevelManagerScript>().level;
+        enemiesDefeated = 0;
+        enemiesToNextLevel = levelManager.GetComponent<LevelManagerScript>().levelEnemies.Count;
         UpdateUI();
     }
 

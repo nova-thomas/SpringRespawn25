@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5001953206706217340}
   - component: {fileID: 3551647945783380210}
   - component: {fileID: 6560541457324658702}
+  - component: {fileID: 143812608420502113}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -163,8 +164,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.46510553, g: 1, b: 0.42452818, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -237,6 +238,7 @@ MonoBehaviour:
   fullHeart: {fileID: 0}
   halfHeart: {fileID: 0}
   deathScreenCanvas: {fileID: 0}
+  mainCanvas: {fileID: 0}
 --- !u!114 &5001953206706217340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +401,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -504,3 +506,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &143812608420502113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796705292844108504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8e70ce9de18ea4a8cb09cafa10cff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: 21300000, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
+  - {fileID: 21300002, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
+  - {fileID: 21300004, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
+  - {fileID: 21300006, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
+  - {fileID: 21300008, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
+  - {fileID: 21300010, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
+  - {fileID: 21300012, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
+  frameRate: 0.1

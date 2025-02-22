@@ -46,9 +46,9 @@ public class EnemyBase : MonoBehaviour
     void OnDestroy()
     {
         GameObject levelManager = GameObject.FindGameObjectWithTag("LevelManager");
-        if (levelManager != null)
-        {
-            levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
-        }
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
+        player.GetComponent<PlayerController>().EnemyDefeated();
     }
 }

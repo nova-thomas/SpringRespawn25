@@ -22,11 +22,6 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            if (playerController != null)// Change to check level manager number of enemies
-            {
-                playerController.EnemyDefeated(); 
-            }
-
             //40% chance ------ put in enemy script for drop function
             if (Random.value < 0.6f && itemPickupPrefab != null)
             {
