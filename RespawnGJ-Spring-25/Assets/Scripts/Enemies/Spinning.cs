@@ -17,16 +17,19 @@ public class Spinning : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        if (canShoot)
+        if (started)
         {
-            Fire();
-        }
+            if (canShoot)
+            {
+                Fire();
+            }
 
-        if (Health <= 0)
-        {
-            Destroy(gameObject);
-        }
+            if (Health <= 0)
+            {
+                Destroy(gameObject);
+            }
 
-        transform.Rotate(0, 0, 90*Time.deltaTime);
+            transform.Rotate(0, 0, 90 * Time.deltaTime);
+        }
     }
 }

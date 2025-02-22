@@ -21,6 +21,7 @@ public class LevelManagerScript : MonoBehaviour
     public AudioClip backgroundMusic;
 
     private AudioSource audioSource;
+    
 
 
     // Start is called before the first frame update
@@ -147,22 +148,34 @@ public class LevelManagerScript : MonoBehaviour
                 levelEnemies.Add(Instantiate(Enemy3, position, Quaternion.identity));
             }
         }
-        // Spawn Indicators (Change sprite to spawn indicators)
+        // Spawn Indicators (Enable indicator sprites)
         foreach (GameObject enemy in levelEnemies)
         {
-            // Pseudocode: Change enemy's sprite to spawn indicator sprite
-            // enemy.GetComponent<SpriteRenderer>().sprite = spawnIndicatorSprite;
+            SpriteRenderer[] renderers = enemy.GetComponentsInChildren<SpriteRenderer>(true);
+
+            if (renderers.Length > 1) // Assuming the first is the enemy, second is the indicator
+            {
+                renderers[0].enabled = false; // Disable main enemy sprite
+                renderers[1].enabled = true;  // Enable spawn indicator
+            }
         }
 
         // Wait 5 seconds
         yield return new WaitForSeconds(5f);
 
-        // Change Sprites to normal and set started to true
+        // Re-enable main sprites and disable indicators
         foreach (GameObject enemy in levelEnemies)
         {
-            // Pseudocode: Change sprite back to normal and set 'started' to true
-            // enemy.GetComponent<SpriteRenderer>().sprite = normalSprite;
-            // enemy.GetComponent<EnemyScript>().started = true;
+            SpriteRenderer[] renderers = enemy.GetComponentsInChildren<SpriteRenderer>(true);
+
+            if (renderers.Length > 1)
+            {
+                renderers[1].enabled = false; // Disable spawn indicator
+                renderers[0].enabled = true;  // Enable main enemy sprite
+            }
+
+            // Start enemy behavior
+            enemy.GetComponent<EnemyBase>().started = true;
         }
     }
 

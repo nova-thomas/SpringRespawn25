@@ -19,25 +19,28 @@ public class StraightLine : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        if (canShoot)
+        if(started)
         {
-            Fire();
-        }
+            if (canShoot)
+            {
+                Fire();
+            }
 
-        if (Health <= 0)
-        {
-            Destroy(gameObject);
-        }
+            if (Health <= 0)
+            {
+                Destroy(gameObject);
+            }
 
-        if (Player == null)
-        {
-            Player = GameObject.FindGameObjectWithTag("Player");
-        }
-        else
-        {
-            Vector3 direction = Player.transform.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x);
-            transform.rotation = Quaternion.EulerAngles(0,0,angle-90*Mathf.Deg2Rad);
+            if (Player == null)
+            {
+                Player = GameObject.FindGameObjectWithTag("Player");
+            }
+            else
+            {
+                Vector3 direction = Player.transform.position - transform.position;
+                float angle = Mathf.Atan2(direction.y, direction.x);
+                transform.rotation = Quaternion.EulerAngles(0, 0, angle - 90 * Mathf.Deg2Rad);
+            }
         }
     }
 }
