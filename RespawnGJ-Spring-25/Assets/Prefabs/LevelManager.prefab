@@ -49,7 +49,7 @@ MonoBehaviour:
   numE2: 0
   numE3: 0
   Enemy1: {fileID: 6735299076767195306, guid: 8b572cf784bc33948b20fde1192f04ab, type: 3}
-  Enemy2: {fileID: 1583970568186616430, guid: 449a974a763cda04397be24527ab747f, type: 3}
+  Enemy2: {fileID: 2386370872417634456, guid: aefda559adc9a704d908835eecf2366a, type: 3}
   Enemy3: {fileID: 4616584229054628598, guid: 6534950df1d6d6643802695a24984828, type: 3}
   levelEnemies: []
   player: {fileID: 0}
