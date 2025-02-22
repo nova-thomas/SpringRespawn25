@@ -21,11 +21,12 @@ public class StraightLine : EnemyBase
     {
         if (canShoot)
         {
-            GameObject temp = Instantiate(Bullet, transform.position, Quaternion.identity);
-            temp.GetComponent<EnemyBullet>().speed = Speed;
-            temp.GetComponent<EnemyBullet>().transform.rotation = transform.rotation;
-            canShoot = false;
-            StartCoroutine(Reload());
+            Fire();
+        }
+
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
         }
 
         if (Player == null)

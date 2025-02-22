@@ -214,7 +214,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1486928477
+--- !u!1001 &1799358399
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -224,11 +224,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 943701726773762335, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.586983
+      value: 4.3481965
       objectReference: {fileID: 0}
     - target: {fileID: 943701726773762335, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.8525138
+      value: -4.668119
       objectReference: {fileID: 0}
     - target: {fileID: 943701726773762335, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -262,10 +262,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
-      propertyPath: cameraTransform
-      value: 
-      objectReference: {fileID: 686095809}
     - target: {fileID: 5796705292844108504, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -338,4 +334,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 686095809}
   - {fileID: 2562966177462939523}
-  - {fileID: 1486928477}
+  - {fileID: 1799358399}

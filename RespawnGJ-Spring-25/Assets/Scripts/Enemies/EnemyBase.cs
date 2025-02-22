@@ -29,10 +29,7 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,5 +38,14 @@ public class EnemyBase : MonoBehaviour
         {
             Health--;
         }
+    }
+
+    public void Fire()
+    {
+        GameObject temp = Instantiate(Bullet, transform.position, Quaternion.identity);
+        temp.GetComponent<EnemyBullet>().speed = Speed;
+        temp.GetComponent<EnemyBullet>().transform.rotation = transform.rotation;
+        canShoot = false;
+        StartCoroutine(Reload());
     }
 }
