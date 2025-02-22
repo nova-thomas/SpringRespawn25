@@ -212,6 +212,7 @@ MonoBehaviour:
   Bullet: {fileID: 8906487464026922425, guid: b19c31872b68d56419a9793e23b11510, type: 3}
   Item: {fileID: 0}
   started: 0
+  levelManager: {fileID: 0}
   Player: {fileID: 0}
 --- !u!1 &8113658611520533280
 GameObject:
@@ -223,6 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5323979692306571220}
   - component: {fileID: 3709481868634107431}
+  - component: {fileID: 6895175523927841096}
   m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
@@ -286,8 +288,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3098039, g: 0.33862856, b: 0.7529412, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -297,3 +299,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6895175523927841096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113658611520533280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8e70ce9de18ea4a8cb09cafa10cff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: 21300000, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300002, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300004, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300006, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300008, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300010, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300012, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300014, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300016, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300018, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300020, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300022, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300024, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  - {fileID: 21300026, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
+  frameRate: 0.1

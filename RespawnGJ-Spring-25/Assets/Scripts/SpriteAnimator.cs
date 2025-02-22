@@ -5,16 +5,19 @@ using UnityEngine;
 public class SpriteAnimator : MonoBehaviour
 {
     public Sprite[] frames; // Array of sprites to cycle through
-    public float frameRate = 0.1f; // Time between frames in seconds
+    public float frameRate; // Time between frames in seconds
 
     private SpriteRenderer spriteRenderer;
     private int currentFrame;
     private float timer;
+    public GameObject levelManager;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         timer = 0f;
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        frameRate = levelManager.GetComponent<LevelManagerScript>().beatInterval;
     }
 
     void Update()

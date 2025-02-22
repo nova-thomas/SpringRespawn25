@@ -56,6 +56,7 @@ MonoBehaviour:
   Bullet: {fileID: 8906487464026922425, guid: edb79b2824008494fbce25b6224d52a6, type: 3}
   Item: {fileID: 0}
   started: 0
+  levelManager: {fileID: 0}
 --- !u!50 &2057781147909515189
 Rigidbody2D:
   serializedVersion: 4
@@ -144,6 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2270493520557865288}
   - component: {fileID: 866220258520110652}
+  - component: {fileID: 4872581109394579492}
   m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
@@ -207,8 +209,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0.9528302, g: 0.27416337, b: 0.27416337, a: 1}
+  m_Sprite: {fileID: 9812054, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -218,6 +220,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4872581109394579492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886501417114562800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8e70ce9de18ea4a8cb09cafa10cff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: 9812054, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
+  - {fileID: 1811126358, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
+  - {fileID: 1617896921, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
+  - {fileID: -1186567856, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
+  - {fileID: -216261279, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
+  - {fileID: 976849154, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
+  - {fileID: 1103785647, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
+  frameRate: 0.1
 --- !u!1 &5880498169777090001
 GameObject:
   m_ObjectHideFlags: 0
