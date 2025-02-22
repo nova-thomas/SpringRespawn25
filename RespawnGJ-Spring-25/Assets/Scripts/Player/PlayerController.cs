@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject levelManager;
 
+    private SpriteRenderer spriteRenderer;
+
     [Header("Health UI")]
     public Image[] heartImages; 
     public Sprite fullHeart;
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        spriteRenderer = GetComponent<SpriteRenderer>();
         if (mainCanvas != null )
         {
             mainCanvas.SetActive(true);
@@ -269,6 +272,7 @@ public void OnFire(InputAction.CallbackContext context)
 
     public void TakeDamage()
     {
+        StartCoroutine(DamageFlash());
         health -= 1;
         UpdateHealthUI();
 
@@ -343,6 +347,16 @@ public void OnFire(InputAction.CallbackContext context)
         if (audioSource != null)
         {
             audioSource.PlayOneShot(itemSound);
+        }
+    }
+
+    private IEnumerator DamageFlash()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.red; // Change to red
+            yield return new WaitForSeconds(0.1f); // Short delay (impact frame)
+            spriteRenderer.color = Color.white; // Back to normal
         }
     }
 }

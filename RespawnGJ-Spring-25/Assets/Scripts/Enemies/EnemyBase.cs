@@ -15,6 +15,11 @@ public class EnemyBase : MonoBehaviour
     public GameObject Item;
     public bool started;
 
+    private SpriteRenderer spriteRenderer;
+    private void Start()
+    {
+        spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+    }
     public IEnumerator Reload()
     {
         yield return new WaitForSeconds(RoF);
@@ -28,6 +33,7 @@ public class EnemyBase : MonoBehaviour
         {
             if (collision.gameObject.tag == "PlayerBullet")
             {
+                StartCoroutine(DamageFlash());
                 Destroy(collision.gameObject);
                 Health--;
             }
@@ -50,5 +56,15 @@ public class EnemyBase : MonoBehaviour
 
         levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
         player.GetComponent<PlayerController>().EnemyDefeated();
+    }
+
+    private IEnumerator DamageFlash()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.red; // Change to red
+            yield return new WaitForSeconds(0.1f); // Short delay (impact frame)
+            spriteRenderer.color = Color.white; // Back to normal
+        }
     }
 }

@@ -7,8 +7,7 @@ public class StraightLine : EnemyBase
     public GameObject levelManager;
     public GameObject Player;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Type = 1;
         Health = 1;

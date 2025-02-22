@@ -5,8 +5,7 @@ using UnityEngine;
 public class Spinning : EnemyBase
 {
     public GameObject levelManager;
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Type = 2;
         Health = 2;
