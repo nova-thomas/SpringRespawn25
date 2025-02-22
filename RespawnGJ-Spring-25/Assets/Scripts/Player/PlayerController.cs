@@ -45,14 +45,19 @@ public class PlayerController : MonoBehaviour
     public Sprite fullHeart;
     public Sprite halfHeart;
 
-    [Header("Death Screen")]
-    public GameObject deathScreenCanvas; 
+    [Header("UI Canvases")]
+    public GameObject deathScreenCanvas;
+    public GameObject mainCanvas;
 
     private void Start()
     {
         mainCamera = Camera.main;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        if (mainCanvas != null )
+        {
+            mainCanvas.SetActive(true);
+        }
 
         if (rb != null)
         {
@@ -65,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
         if (deathScreenCanvas != null)
         {
-            deathScreenCanvas.SetActive(false); // Hide death screen at the start
+            deathScreenCanvas.SetActive(false); 
         }
     }
 
@@ -250,9 +255,15 @@ public class PlayerController : MonoBehaviour
 
         Time.timeScale = 0f;
 
+        if (mainCanvas != null)
+        {
+            mainCanvas.SetActive(false);
+        }
+
         if (deathScreenCanvas != null)
         {
             deathScreenCanvas.SetActive(true);
+            
         }
     }
 
