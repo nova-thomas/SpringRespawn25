@@ -8,7 +8,7 @@ public class Spinning : EnemyBase
     void Start()
     {
         Type = 2;
-        Health = 3;
+        Health = 2;
         Speed = 4;
         RoF = .75f;
         canShoot = true;

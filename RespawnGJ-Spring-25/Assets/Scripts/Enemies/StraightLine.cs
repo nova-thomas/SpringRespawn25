@@ -10,7 +10,7 @@ public class StraightLine : EnemyBase
     void Start()
     {
         Type = 1;
-        Health = 3;
+        Health = 1;
         Speed = 6;
         RoF = 1f;
         canShoot = true;
