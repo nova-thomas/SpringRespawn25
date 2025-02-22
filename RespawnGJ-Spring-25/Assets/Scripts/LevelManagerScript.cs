@@ -32,8 +32,9 @@ public class LevelManagerScript : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.Play();
         audioSource.pitch = 0.5f;
+        audioSource.volume = 0.25f;
 
-        level = 50;
+        level = 25;
         player = GameObject.FindGameObjectWithTag("Player");
 
         startNewLevel();
@@ -45,11 +46,12 @@ public class LevelManagerScript : MonoBehaviour
         if (levelEnemies.Count == 0)
         {
             level++;
+            audioSource.pitch += 0.04f;
             startNewLevel();
         }
 
         // Win Condition
-        if (level == 50 && levelEnemies.Count == 0)
+        if (level == 25 && levelEnemies.Count == 0)
         {
 
         }
@@ -166,7 +168,6 @@ public class LevelManagerScript : MonoBehaviour
 
     public void startNewLevel()
     {
-        audioSource.pitch += 0.02f;
         // Set number of enemies 
         // Min 1, if level 1-10, 1 per level, if level 11-30, 1 per 4 levels, 31-50, 1 per 6
         if(level <= 10)
