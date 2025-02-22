@@ -52,7 +52,6 @@ public class EnemyBullet : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(beatInterval);
-            Debug.Log($"Rotating sprite! Beat Interval: {beatInterval}s");
             spriteChild.Rotate(0, 0, 90f); // Rotate 90 degrees around the Z-axis
         }
     }

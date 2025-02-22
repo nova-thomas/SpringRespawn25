@@ -34,6 +34,7 @@ public class Ring : EnemyBase
 
             if (Health <= 0)
             {
+                levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
                 Destroy(gameObject);
             }
         }

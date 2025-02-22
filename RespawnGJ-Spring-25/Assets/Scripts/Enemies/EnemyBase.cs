@@ -63,12 +63,4 @@ public class EnemyBase : MonoBehaviour
         canShoot = false;
         StartCoroutine(Reload());
     }
-
-    void OnDestroy()
-    {
-        if (levelManager != null)
-        {
-            levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
-        }
-    }
 }
