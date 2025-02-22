@@ -10,6 +10,9 @@ public class LevelManagerScript : MonoBehaviour
     public int numE2;
     public int numE3;
 
+    public int bpm = 110;
+    public float beatInterval;
+
     // References
     public GameObject Enemy1;
     public GameObject Enemy2;
@@ -34,6 +37,7 @@ public class LevelManagerScript : MonoBehaviour
         audioSource.Play();
         audioSource.pitch = 0.5f;
         audioSource.volume = 0.25f;
+        beatInterval = (60f / bpm) / audioSource.pitch;
 
         level = 1;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -48,6 +52,7 @@ public class LevelManagerScript : MonoBehaviour
         {
             level++;
             audioSource.pitch += 0.04f;
+            beatInterval = (60f / bpm) / audioSource.pitch;
             startNewLevel();
         }
 
@@ -176,6 +181,7 @@ public class LevelManagerScript : MonoBehaviour
 
             // Start enemy behavior
             enemy.GetComponent<EnemyBase>().started = true;
+            enemy.GetComponent<EnemyBase>().canShoot = true;
         }
     }
 

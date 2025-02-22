@@ -14,11 +14,22 @@ public class EnemyBase : MonoBehaviour
     public GameObject Bullet;
     public GameObject Item;
     public bool started;
+    public GameObject levelManager;
+
+    public int bpm;
 
     // Start is called before the first frame update
     void Start()
     {
         started = false;
+        canShoot = false;
+
+        // Get BPM from LevelManager
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        if (levelManager != null)
+        {
+            RoF = levelManager.GetComponent<LevelManagerScript>().beatInterval;
+        }
     }
 
     public IEnumerator Reload()
@@ -35,11 +46,10 @@ public class EnemyBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(started)
+        if(started == true)
         {
             if (collision.gameObject.tag == "PlayerBullet")
             {
-                Destroy(collision.gameObject);
                 Health--;
             }
         }
@@ -56,7 +66,6 @@ public class EnemyBase : MonoBehaviour
 
     void OnDestroy()
     {
-        GameObject levelManager = GameObject.FindGameObjectWithTag("LevelManager");
         if (levelManager != null)
         {
             levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
