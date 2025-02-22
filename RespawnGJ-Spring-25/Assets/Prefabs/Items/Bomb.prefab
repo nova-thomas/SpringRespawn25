@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8598434722970211700}
   - component: {fileID: 6071865310546951585}
   - component: {fileID: -644569091438643021}
+  - component: {fileID: 6198576319746533676}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: PlayerBullet
@@ -113,6 +114,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6198576319746533676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414605932448724033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b763ac78af25f4795d119217cc456f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Exposion: {fileID: 2666845098941058177, guid: eef4bd656e5031c4097006a55871fa48, type: 3}
 --- !u!1 &4892908596510541580
 GameObject:
   m_ObjectHideFlags: 0
