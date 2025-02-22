@@ -36,6 +36,7 @@ public class EnemyBase : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerBullet")
         {
+            Destroy(collision.gameObject);
             Health--;
         }
     }
