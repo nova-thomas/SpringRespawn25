@@ -31,9 +31,11 @@ public class LevelManagerScript : MonoBehaviour
         audioSource.loop = true;
         audioSource.playOnAwake = false;
         audioSource.Play();
+        audioSource.pitch = 0.5f;
 
-        level = 1;
-        //player = GameObject.FindGameObjectWithTag("Player");
+        level = 50;
+        player = GameObject.FindGameObjectWithTag("Player");
+
         startNewLevel();
     }
 
@@ -59,33 +61,42 @@ public class LevelManagerScript : MonoBehaviour
     }
     private IEnumerator SpawnWaveRoutine(int numEnemy1, int numEnemy2, int numEnemy3)
     {
-        float screenLeft = -7f;
-        float screenRight = 7f;
-        float screenTop = 4f;
-        float screenBottom = -4f;
+        float screenLeft = -20f;
+        float screenRight = 20f;
+        float screenTop = 11f;
+        float screenBottom = -11f;
 
-        // Spawn Pattern 2 Columns
-        float yCenter = (screenTop + screenBottom) / 2;
-        int rowsPerColumn = numEnemy1 / 4;
+        // Spawn Pattern Sprial
+        float angleStepSprial = 35f; // Angle increment per enemy
+        float radiusStep = 0.3f; // Distance increment per enemy
+        Vector2 centerSprial = new Vector2((screenLeft + screenRight) / 2, (screenTop + screenBottom) / 2);
+        float currentAngle = 90f;
+        float currentRadius = 5f;
+
         for (int i = 0; i < numEnemy1; i++)
         {
-            int column = i % 4;
-            int row = i / 4;
-            float yPos = yCenter + (row - (rowsPerColumn / 2)) * 1.5f; // Spacing enemies vertically
-            float xPos = Mathf.Lerp(screenLeft, screenRight, column / 3f); // Distribute across 4 columns
-            Vector2 position = new Vector2(xPos, yPos);
+
+            float angle = currentAngle * Mathf.Deg2Rad;
+            Vector2 position = new Vector2(
+                centerSprial.x + Mathf.Cos(angle) * currentRadius,
+                centerSprial.y + Mathf.Sin(angle) * currentRadius
+            );
+
             levelEnemies.Add(Instantiate(Enemy1, position, Quaternion.identity));
+
+            currentAngle += angleStepSprial;
+            currentRadius += radiusStep;
         }
 
         if (level >= 3)
         {
             // Spawn Pattern Box
-            int sides = Mathf.Max(4, numEnemy2);
+            int sides = Mathf.Max(4, (numEnemy2 / 4) * 4); // Ensure divisible by 4
             float perimeter = 2 * ((screenRight - screenLeft - 2f) + (screenTop - screenBottom - 2f));
             float spacing = perimeter / sides;
             float distanceCovered = 0f;
 
-            for (int i = 0; i < numEnemy2; i++)
+            for (int i = 0; i < sides; i++) // Loop through corrected sides
             {
                 float pos = distanceCovered % perimeter;
                 Vector2 position;
@@ -114,20 +125,26 @@ public class LevelManagerScript : MonoBehaviour
 
         if (level >= 5)
         {
-            // Spawn Pattern Circle
-            float radius = 4f;
-            float angleStep = 360f / numEnemy3;
-            Vector2 center = new Vector2((screenLeft + screenRight) / 2, (screenTop + screenBottom) / 2);
-            float startAngle = 90f; // Start from above center
+            float waveAmplitude = 10f; // Height of the wave
+            float waveFrequency = 1.5f; // Number of wave cycles across the screen
+            float waveLength = screenRight - screenLeft; // Full horizontal span
 
             for (int i = 0; i < numEnemy3; i++)
             {
-                float angle = (startAngle + i * angleStep) * Mathf.Deg2Rad;
-                Vector2 position = new Vector2(center.x + Mathf.Cos(angle) * radius, center.y + Mathf.Sin(angle) * radius);
+                float progress = (float)i / (numEnemy3 - 1); // Normalized position between 0 and 1
+                float xPos = screenLeft + progress * waveLength; // Spread across the screen
+
+                // Alternate enemies in opposite wave patterns
+                float yPos = Mathf.Sin(progress * waveFrequency * Mathf.PI * 2) * waveAmplitude + (screenTop + screenBottom) / 2;
+                if (i % 2 == 1)
+                {
+                    yPos = Mathf.Sin(progress * waveFrequency * Mathf.PI * 2 + Mathf.PI) * waveAmplitude + (screenTop + screenBottom) / 2; // Inverted wave
+                }
+
+                Vector2 position = new Vector2(xPos, yPos);
                 levelEnemies.Add(Instantiate(Enemy3, position, Quaternion.identity));
             }
         }
-
         // Spawn Indicators (Change sprite to spawn indicators)
         foreach (GameObject enemy in levelEnemies)
         {
@@ -149,10 +166,21 @@ public class LevelManagerScript : MonoBehaviour
 
     public void startNewLevel()
     {
-        // Set number of enemies
-        numE1 = 4 + (level / 8) * 4; // Min 4, 4 added every 7 waves
-        numE2 = 2 + (level / 10) * 2; // Min 4, adding 2 every 5 waves
-        numE3 = 3 + (level / 15) * 3; // Min 3, adding 3 every 15 waves
+        audioSource.pitch += 0.02f;
+        // Set number of enemies 
+        // Min 1, if level 1-10, 1 per level, if level 11-30, 1 per 4 levels, 31-50, 1 per 6
+        if(level <= 10)
+        {
+            numE1 = 1 + (level / 1) * 1;
+        } else if (level <= 30) 
+        {
+            numE1 = 10 + (level / 4) * 1;
+        } else if (level <= 50)
+        {
+            numE1 = 15 + (level / 6) * 1;
+        }
+        numE2 = 4 + (level / 5) * 1; // Min 3, adding 2 every 10 levels
+        numE3 = 3 + (level / 15) * 3; // Min 3, adding 3 every 15 levels
 
         // Spawn Wave
         SpawnWave(numE1, numE2, numE3);

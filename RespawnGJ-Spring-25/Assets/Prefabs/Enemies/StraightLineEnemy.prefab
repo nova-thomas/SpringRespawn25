@@ -263,3 +263,4 @@ MonoBehaviour:
   canShoot: 0
   Bullet: {fileID: 8906487464026922425, guid: b19c31872b68d56419a9793e23b11510, type: 3}
   Item: {fileID: 0}
+  Player: {fileID: 0}
