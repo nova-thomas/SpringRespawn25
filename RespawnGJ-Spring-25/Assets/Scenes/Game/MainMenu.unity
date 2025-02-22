@@ -735,6 +735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 929006082}
   creditsPanel: {fileID: 1539763950}
+  menuMusic: {fileID: 8300000, guid: 43fa573eabc40eb4e960403d797e733b, type: 3}
 --- !u!1 &502176729
 GameObject:
   m_ObjectHideFlags: 0

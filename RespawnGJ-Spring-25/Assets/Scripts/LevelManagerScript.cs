@@ -17,11 +17,21 @@ public class LevelManagerScript : MonoBehaviour
     public List<GameObject> levelEnemies = new List<GameObject>();
 
     public GameObject player;
-    
+
+    public AudioClip backgroundMusic;
+
+    private AudioSource audioSource;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = backgroundMusic;
+        audioSource.loop = true;
+        audioSource.playOnAwake = false;
+        audioSource.Play();
+
         level = 1;
         //player = GameObject.FindGameObjectWithTag("Player");
         startNewLevel();
