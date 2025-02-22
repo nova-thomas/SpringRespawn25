@@ -4,12 +4,12 @@ public class PlayerBullet : MonoBehaviour
 {
     public float speed = 10f;
     public float lifetime = 7f;
-    public PlayerController playerController; 
+    public PlayerController playerController;
+    public GameObject itemPickupPrefab; 
 
     private void Start()
     {
         Destroy(gameObject, lifetime);
-
         playerController = FindObjectOfType<PlayerController>();
     }
 
@@ -22,17 +22,23 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject); 
-
             if (playerController != null)
             {
-                playerController.EnemyDefeated(); 
+                playerController.EnemyDefeated();
             }
+
+            //40% chance
+            if (Random.value < 0.6f && itemPickupPrefab != null)
+            {
+                Instantiate(itemPickupPrefab, collision.transform.position, Quaternion.identity);
+            }
+
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
         else if (collision.CompareTag("Wall"))
         {
-            Destroy(gameObject); // Destroy the bullet on impact with wall
+            Destroy(gameObject);
         }
     }
 }

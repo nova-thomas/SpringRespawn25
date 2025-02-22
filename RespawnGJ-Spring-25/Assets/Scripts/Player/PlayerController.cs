@@ -33,10 +33,17 @@ public class PlayerController : MonoBehaviour
     public GameObject shieldPrefab;
     public TMP_Text shieldText;
     public TMP_Text bombText;
+
+    public AudioClip itemSound;
+    public AudioClip bombCountdownSound;
+    public AudioClip bombExplosionSound;
+
+    private AudioSource audioSource;
     private void Start()
     {
         mainCamera = Camera.main;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         if (rb != null)
         {
             rb.gravityScale = 0;
@@ -44,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
         enemiesToNextLevel = level * 2;
         UpdateUI();
+
     }
 
     private void Update()
@@ -108,7 +116,13 @@ public class PlayerController : MonoBehaviour
     private void PlaceBomb()
     {
         GameObject bomb = Instantiate(bombPrefab, transform.position, Quaternion.identity);
-        bombAmount--; 
+        bombAmount--;
+
+        if (audioSource != null && bombCountdownSound != null)
+        {
+            audioSource.PlayOneShot(bombCountdownSound); 
+        }
+
         StartCoroutine(ExplodeBomb(bomb));
     }
 
@@ -116,6 +130,12 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f); 
 
+        if (audioSource != null && bombExplosionSound != null)
+        {
+            audioSource.volume = 0.45f;
+            audioSource.PlayOneShot(bombExplosionSound);
+            audioSource.volume = 0.75f;
+        }
 
         float explosionRadius = 2f;
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(bomb.transform.position, explosionRadius);
@@ -124,14 +144,15 @@ public class PlayerController : MonoBehaviour
         {
             if (enemy.CompareTag("Enemy"))
             {
-                Destroy(enemy.gameObject); 
+                Destroy(enemy.gameObject);
             }
         }
 
-        Destroy(bomb); 
+        Destroy(bomb);
     }
 
-   
+
+
     public void OnShieldActivate(InputAction.CallbackContext context)
     {
         if (context.started && shieldAmount > 0)
@@ -172,7 +193,7 @@ public class PlayerController : MonoBehaviour
         UpdateUI();
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if (levelText != null)
         {
@@ -191,6 +212,14 @@ public class PlayerController : MonoBehaviour
         if (shieldText != null)
         {
             shieldText.text = shieldAmount.ToString();
+        }
+    }
+
+    public void PlayItemPickupSound()
+    {
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(itemSound); 
         }
     }
 }
