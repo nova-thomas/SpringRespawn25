@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4613288896294192064}
   m_Layer: 0
   m_Name: YellowArrow
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,3 +169,4 @@ MonoBehaviour:
   lifetime: 5
   timer: 0
   StartPos: {x: 0, y: 0}
+  bpm: 0
