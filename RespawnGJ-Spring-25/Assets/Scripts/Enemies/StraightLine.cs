@@ -40,4 +40,13 @@ public class StraightLine : EnemyBase
             transform.rotation = Quaternion.EulerAngles(0,0,angle-90*Mathf.Deg2Rad);
         }
     }
+
+    void OnDestroy()
+    {
+        GameObject levelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        if (levelManager != null)
+        {
+            levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
+        }
+    }
 }

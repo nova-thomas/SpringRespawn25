@@ -34,7 +34,7 @@ public class LevelManagerScript : MonoBehaviour
         audioSource.pitch = 0.5f;
         audioSource.volume = 0.25f;
 
-        level = 25;
+        level = 1;
         player = GameObject.FindGameObjectWithTag("Player");
 
         startNewLevel();
@@ -185,5 +185,13 @@ public class LevelManagerScript : MonoBehaviour
 
         // Spawn Wave
         SpawnWave(numE1, numE2, numE3);
+    }
+
+    public void RemoveEnemy(GameObject enemy)
+    {
+        if (levelEnemies.Contains(enemy))
+        {
+            levelEnemies.Remove(enemy);
+        }
     }
 }
