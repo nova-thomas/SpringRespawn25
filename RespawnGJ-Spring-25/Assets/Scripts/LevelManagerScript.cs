@@ -18,6 +18,7 @@ public class LevelManagerScript : MonoBehaviour
     public GameObject Enemy1;
     public GameObject Enemy2;
     public GameObject Enemy3;
+    public GameObject BossEnemy;
     public List<GameObject> levelEnemies = new List<GameObject>();
 
     public GameObject player;
@@ -76,85 +77,98 @@ public class LevelManagerScript : MonoBehaviour
         float screenTop = 11f;
         float screenBottom = -11f;
 
-        // Spawn Pattern Sprial
-        float angleStepSprial = 35f; // Angle increment per enemy
-        float radiusStep = 0.3f; // Distance increment per enemy
-        Vector2 centerSprial = new Vector2((screenLeft + screenRight) / 2, (screenTop + screenBottom) / 2);
-        float currentAngle = 90f;
-        float currentRadius = 5f;
-
-        for (int i = 0; i < numEnemy1; i++)
+        if (level % 5 != 0)
         {
+            // Spawn Pattern Sprial
+            float angleStepSprial = 35f; // Angle increment per enemy
+            float radiusStep = 0.3f; // Distance increment per enemy
+            Vector2 centerSprial = new Vector2((screenLeft + screenRight) / 2, (screenTop + screenBottom) / 2);
+            float currentAngle = 90f;
+            float currentRadius = 5f;
 
-            float angle = currentAngle * Mathf.Deg2Rad;
-            Vector2 position = new Vector2(
-                centerSprial.x + Mathf.Cos(angle) * currentRadius,
-                centerSprial.y + Mathf.Sin(angle) * currentRadius
-            );
-
-            levelEnemies.Add(Instantiate(Enemy1, position, Quaternion.identity));
-
-            currentAngle += angleStepSprial;
-            currentRadius += radiusStep;
-        }
-
-        if (level >= 3)
-        {
-            // Spawn Pattern Box
-            int sides = Mathf.Max(4, (numEnemy2 / 4) * 4); // Ensure divisible by 4
-            float perimeter = 2 * ((screenRight - screenLeft - 2f) + (screenTop - screenBottom - 2f));
-            float spacing = perimeter / sides;
-            float distanceCovered = 0f;
-
-            for (int i = 0; i < sides; i++) // Loop through corrected sides
+            for (int i = 0; i < numEnemy1; i++)
             {
-                float pos = distanceCovered % perimeter;
-                Vector2 position;
 
-                if (pos < (screenRight - screenLeft - 2f)) // Top side
-                {
-                    position = new Vector2(screenLeft + 1f + pos, screenTop - 1f);
-                }
-                else if (pos < (screenRight - screenLeft - 2f) + (screenTop - screenBottom - 2f)) // Right side
-                {
-                    position = new Vector2(screenRight - 1f, screenTop - 1f - (pos - (screenRight - screenLeft - 2f)));
-                }
-                else if (pos < 2 * (screenRight - screenLeft - 2f) + (screenTop - screenBottom - 2f)) // Bottom side
-                {
-                    position = new Vector2(screenRight - 1f - (pos - (screenRight - screenLeft - 2f + screenTop - screenBottom - 2f)), screenBottom + 1f);
-                }
-                else // Left side
-                {
-                    position = new Vector2(screenLeft + 1f, screenBottom + 1f + (pos - (2 * (screenRight - screenLeft - 2f) + (screenTop - screenBottom - 2f))));
-                }
+                float angle = currentAngle * Mathf.Deg2Rad;
+                Vector2 position = new Vector2(
+                    centerSprial.x + Mathf.Cos(angle) * currentRadius,
+                    centerSprial.y + Mathf.Sin(angle) * currentRadius
+                );
 
-                levelEnemies.Add(Instantiate(Enemy2, position, Quaternion.identity));
-                distanceCovered += spacing;
+                levelEnemies.Add(Instantiate(Enemy1, position, Quaternion.identity));
+
+                currentAngle += angleStepSprial;
+                currentRadius += radiusStep;
             }
-        }
 
-        if (level >= 5)
-        {
-            float waveAmplitude = 10f; // Height of the wave
-            float waveFrequency = 1.5f; // Number of wave cycles across the screen
-            float waveLength = screenRight - screenLeft; // Full horizontal span
-
-            for (int i = 0; i < numEnemy3; i++)
+            if (level >= 3)
             {
-                float progress = (float)i / (numEnemy3 - 1); // Normalized position between 0 and 1
-                float xPos = screenLeft + progress * waveLength; // Spread across the screen
+                // Spawn Pattern Box
+                int sides = Mathf.Max(4, (numEnemy2 / 4) * 4); // Ensure divisible by 4
+                float perimeter = 2 * ((screenRight - screenLeft - 2f) + (screenTop - screenBottom - 2f));
+                float spacing = perimeter / sides;
+                float distanceCovered = 0f;
 
-                // Alternate enemies in opposite wave patterns
-                float yPos = Mathf.Sin(progress * waveFrequency * Mathf.PI * 2) * waveAmplitude + (screenTop + screenBottom) / 2;
-                if (i % 2 == 1)
+                for (int i = 0; i < sides; i++) // Loop through corrected sides
                 {
-                    yPos = Mathf.Sin(progress * waveFrequency * Mathf.PI * 2 + Mathf.PI) * waveAmplitude + (screenTop + screenBottom) / 2; // Inverted wave
-                }
+                    float pos = distanceCovered % perimeter;
+                    Vector2 position;
 
-                Vector2 position = new Vector2(xPos, yPos);
-                levelEnemies.Add(Instantiate(Enemy3, position, Quaternion.identity));
+                    if (pos < (screenRight - screenLeft - 2f)) // Top side
+                    {
+                        position = new Vector2(screenLeft + 1f + pos, screenTop - 1f);
+                    }
+                    else if (pos < (screenRight - screenLeft - 2f) + (screenTop - screenBottom - 2f)) // Right side
+                    {
+                        position = new Vector2(screenRight - 1f, screenTop - 1f - (pos - (screenRight - screenLeft - 2f)));
+                    }
+                    else if (pos < 2 * (screenRight - screenLeft - 2f) + (screenTop - screenBottom - 2f)) // Bottom side
+                    {
+                        position = new Vector2(screenRight - 1f - (pos - (screenRight - screenLeft - 2f + screenTop - screenBottom - 2f)), screenBottom + 1f);
+                    }
+                    else // Left side
+                    {
+                        position = new Vector2(screenLeft + 1f, screenBottom + 1f + (pos - (2 * (screenRight - screenLeft - 2f) + (screenTop - screenBottom - 2f))));
+                    }
+
+                    levelEnemies.Add(Instantiate(Enemy2, position, Quaternion.identity));
+                    distanceCovered += spacing;
+                }
             }
+
+            if (level >= 5)
+            {
+                float waveAmplitude = 10f; // Height of the wave
+                float waveFrequency = 1.5f; // Number of wave cycles across the screen
+                float waveLength = screenRight - screenLeft; // Full horizontal span
+
+                for (int i = 0; i < numEnemy3; i++)
+                {
+                    float progress = (float)i / (numEnemy3 - 1); // Normalized position between 0 and 1
+                    float xPos = screenLeft + progress * waveLength; // Spread across the screen
+
+                    // Alternate enemies in opposite wave patterns
+                    float yPos = Mathf.Sin(progress * waveFrequency * Mathf.PI * 2) * waveAmplitude + (screenTop + screenBottom) / 2;
+                    if (i % 2 == 1)
+                    {
+                        yPos = Mathf.Sin(progress * waveFrequency * Mathf.PI * 2 + Mathf.PI) * waveAmplitude + (screenTop + screenBottom) / 2; // Inverted wave
+                    }
+
+                    Vector2 position = new Vector2(xPos, yPos);
+                    levelEnemies.Add(Instantiate(Enemy3, position, Quaternion.identity));
+                }
+            }
+        } else // Boss Levels
+        {
+            Vector2 bossSpawnPosition = new Vector2(0f, 5f); // Centered spawn
+            GameObject boss = Instantiate(BossEnemy, bossSpawnPosition, Quaternion.identity);
+            levelEnemies.Add(boss);
+
+            // Start boss behavior
+            boss.GetComponent<EnemyBase>().started = true;
         }
+
+
         // Spawn Indicators (Enable indicator sprites)
         foreach (GameObject enemy in levelEnemies)
         {

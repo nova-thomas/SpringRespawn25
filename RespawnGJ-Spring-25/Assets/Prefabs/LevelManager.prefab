@@ -48,9 +48,12 @@ MonoBehaviour:
   numE1: 0
   numE2: 0
   numE3: 0
+  bpm: 110
+  beatInterval: 0
   Enemy1: {fileID: 6735299076767195306, guid: 8b572cf784bc33948b20fde1192f04ab, type: 3}
   Enemy2: {fileID: 2386370872417634456, guid: aefda559adc9a704d908835eecf2366a, type: 3}
   Enemy3: {fileID: 2198188382356193619, guid: fab0f94f03a2c1c40bd1ce8cee2d6aa7, type: 3}
+  BossEnemy: {fileID: 2198188382356193619, guid: 3f2df3efad880f3429c99ec4ca96c48c, type: 3}
   levelEnemies: []
   player: {fileID: 0}
   backgroundMusic: {fileID: 8300000, guid: 6138525aba670104e868d80334cf4fff, type: 3}
