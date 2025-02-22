@@ -199,12 +199,18 @@ public class PlayerController : MonoBehaviour
         GameObject shield = Instantiate(shieldPrefab, transform.position, Quaternion.identity);
         shield.transform.SetParent(transform);
         shieldAmount--;
+
+        GetComponent<Collider2D>().enabled = false;
+
         StartCoroutine(DeactivateShield(shield));
     }
 
     private IEnumerator DeactivateShield(GameObject shield)
     {
         yield return new WaitForSeconds(3f);
+
+        GetComponent<Collider2D>().enabled = true;
+
         Destroy(shield);
     }
 
@@ -310,8 +316,12 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("EnemyBullet"))
         {
-            TakeDamage();
-            Destroy(collision.gameObject);
+            if (transform.Find("Shield(Clone)") == null)
+            {
+                TakeDamage(); 
+            }
+
+            Destroy(collision.gameObject); 
         }
     }
 
