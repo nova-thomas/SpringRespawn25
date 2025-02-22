@@ -316,10 +316,6 @@ MonoBehaviour:
   - {fileID: 21300002, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
   - {fileID: 21300004, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
   - {fileID: 21300006, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
-  - {fileID: 21300008, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
-  - {fileID: 21300010, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
-  - {fileID: 21300012, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
-  - {fileID: 21300014, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
   - {fileID: 21300016, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
   - {fileID: 21300018, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
   - {fileID: 21300020, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
@@ -327,3 +323,4 @@ MonoBehaviour:
   - {fileID: 21300024, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
   - {fileID: 21300026, guid: ea91c96b396479e4186a6e540de0ccb9, type: 3}
   frameRate: 0.1
+  levelManager: {fileID: 0}

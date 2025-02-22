@@ -234,10 +234,6 @@ MonoBehaviour:
   - {fileID: 21300002, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
   - {fileID: 21300004, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
   - {fileID: 21300006, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
-  - {fileID: 21300008, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
-  - {fileID: 21300010, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
-  - {fileID: 21300012, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
-  - {fileID: 21300014, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
   - {fileID: 21300016, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
   - {fileID: 21300018, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
   - {fileID: 21300020, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
@@ -245,6 +241,7 @@ MonoBehaviour:
   - {fileID: 21300024, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
   - {fileID: 21300026, guid: 4ee5843fc71c6954ab9daafa40de566c, type: 3}
   frameRate: 0.1
+  levelManager: {fileID: 0}
 --- !u!1 &8081182903169949494
 GameObject:
   m_ObjectHideFlags: 0

@@ -235,12 +235,11 @@ MonoBehaviour:
   frames:
   - {fileID: 9812054, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
   - {fileID: 1811126358, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
-  - {fileID: 1617896921, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
-  - {fileID: -1186567856, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
   - {fileID: -216261279, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
   - {fileID: 976849154, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
   - {fileID: 1103785647, guid: d011b984663be154db988a9ca0eaf6cc, type: 3}
   frameRate: 0.1
+  levelManager: {fileID: 0}
 --- !u!1 &5880498169777090001
 GameObject:
   m_ObjectHideFlags: 0
