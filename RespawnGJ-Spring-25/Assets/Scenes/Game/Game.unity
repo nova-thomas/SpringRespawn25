@@ -446,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 750711133}
     - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: bombAmount
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: deathSound

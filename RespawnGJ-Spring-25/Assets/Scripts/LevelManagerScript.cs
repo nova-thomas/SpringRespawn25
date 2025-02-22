@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManagerScript : MonoBehaviour
 {
@@ -59,7 +60,7 @@ public class LevelManagerScript : MonoBehaviour
         // Win Condition
         if (level == 25 && levelEnemies.Count == 0)
         {
-
+            SceneManager.LoadScene("WinScreen");
         }
     }
 
