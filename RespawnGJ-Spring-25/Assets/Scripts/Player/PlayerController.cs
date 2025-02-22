@@ -89,6 +89,12 @@ public class PlayerController : MonoBehaviour
         {
             LevelUp();
         }
+
+        if (level % 5 == 0) 
+        {
+            health += 5; 
+            UpdateHealthUI(); 
+        }
     }
 
     private void FollowMouse()
@@ -111,7 +117,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnFire(InputAction.CallbackContext context)
+  
+
+public void OnFire(InputAction.CallbackContext context)
     {
         if (context.started)
         {

@@ -57,6 +57,7 @@ public class LevelManagerScript : MonoBehaviour
             startNewLevel();
         }
 
+
         // Win Condition
         if (level == 25 && levelEnemies.Count == 0)
         {
