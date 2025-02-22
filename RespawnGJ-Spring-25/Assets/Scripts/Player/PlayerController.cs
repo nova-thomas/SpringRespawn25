@@ -92,12 +92,6 @@ public class PlayerController : MonoBehaviour
         {
             LevelUp();
         }
-
-        if (level % 5 == 0) 
-        {
-            health += 5; 
-            UpdateHealthUI(); 
-        }
     }
 
     private void FollowMouse()
@@ -245,6 +239,11 @@ public void OnFire(InputAction.CallbackContext context)
         level = levelManager.GetComponent<LevelManagerScript>().level;
         enemiesDefeated = 0;
         enemiesToNextLevel = levelManager.GetComponent<LevelManagerScript>().levelEnemies.Count;
+        if (level % 5 == 0)
+        {
+            health += 5;
+            UpdateHealthUI();
+        }
         UpdateUI();
     }
 
