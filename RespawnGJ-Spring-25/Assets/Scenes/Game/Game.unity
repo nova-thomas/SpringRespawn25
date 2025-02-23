@@ -509,37 +509,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
-      propertyPath: health
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: bombText
       value: 
       objectReference: {fileID: 750711131}
-    - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
-      propertyPath: fullHeart
-      value: 
-      objectReference: {fileID: 21300000, guid: 95116dd5e5e33fe4993d58df893bef4d, type: 3}
-    - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
-      propertyPath: halfHeart
-      value: 
-      objectReference: {fileID: 21300000, guid: e23a5a230889bd44bb10bd2dcfb87d1f, type: 3}
     - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: levelText
       value: 
       objectReference: {fileID: 750711133}
     - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
-      propertyPath: bombAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: deathLevel
       value: 
       objectReference: {fileID: 1100846120}
-    - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
-      propertyPath: deathSound
-      value: 
-      objectReference: {fileID: 8300000, guid: aa60c8f90bbf13a48a4954443ac7e891, type: 3}
     - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: mainCanvas
       value: 
@@ -553,21 +533,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 750711132}
     - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
-      propertyPath: shieldAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
-      propertyPath: cameraTransform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: deathScreenCanvas
       value: 
       objectReference: {fileID: 445498283}
-    - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
-      propertyPath: heartImages.Array.size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3791415168361853290, guid: 3416e1c01f072b54b81311c14207086c, type: 3}
       propertyPath: heartImages.Array.data[0]
       value: 
@@ -605,38 +573,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2952269746917251468, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -475
-      objectReference: {fileID: 0}
-    - target: {fileID: 3272002980810513041, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3272002980810513041, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3272002980810513041, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3272002980810513041, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190335
-      objectReference: {fileID: 0}
-    - target: {fileID: 3393729296040833588, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -475
-      objectReference: {fileID: 0}
-    - target: {fileID: 3766194769100162003, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -475
-      objectReference: {fileID: 0}
-    - target: {fileID: 3979422078360945888, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -475
-      objectReference: {fileID: 0}
     - target: {fileID: 4715940261268742633, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -720,10 +656,6 @@ PrefabInstance:
     - target: {fileID: 4880987922206898771, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6229049322457281495, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -475
       objectReference: {fileID: 0}
     - target: {fileID: 6247216633293984570, guid: eb166686f6e006e489dd84e4441d6eb1, type: 3}
       propertyPath: m_Name

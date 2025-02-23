@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip bombCountdownSound;
     public AudioClip bombExplosionSound;
     public AudioClip deathSound; 
+    public AudioClip damaged;
 
     private AudioSource audioSource;
 
@@ -291,6 +292,10 @@ public void OnFire(InputAction.CallbackContext context)
         StartCoroutine(DamageFlash());
         health -= 1;
         UpdateHealthUI();
+        if (audioSource != null && damaged != null)
+        {
+            audioSource.PlayOneShot(damaged);
+        }
 
         if (health <= 0)
         {

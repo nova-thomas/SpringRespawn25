@@ -236,6 +236,7 @@ MonoBehaviour:
   bombCountdownSound: {fileID: 8300000, guid: e0a11ecd7c78d3d4c86b2fc15eebb491, type: 3}
   bombExplosionSound: {fileID: 8300000, guid: b70e94dc826f23044b3bef91cbb1ac58, type: 3}
   deathSound: {fileID: 8300000, guid: aa60c8f90bbf13a48a4954443ac7e891, type: 3}
+  damaged: {fileID: 8300000, guid: 605bc94380e0c4f4a96e84d36c853c68, type: 3}
   levelManager: {fileID: 0}
   heartImages:
   - {fileID: 0}
