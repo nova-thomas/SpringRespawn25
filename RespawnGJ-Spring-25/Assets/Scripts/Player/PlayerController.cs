@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     public GameObject deathScreenCanvas;
     public GameObject mainCanvas;
     private bool isDead = false;
+    public TMP_Text deathLevel;
 
     private void Start()
     {
@@ -318,6 +319,10 @@ public void OnFire(InputAction.CallbackContext context)
         {
             deathScreenCanvas.SetActive(true);
             
+        }
+        if (deathLevel != null)
+        {
+            deathLevel.text = "You reached Level " + level;
         }
     }
 
