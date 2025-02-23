@@ -56,14 +56,16 @@ public class LevelManagerScript : MonoBehaviour
             level++;
             audioSource.pitch += 0.04f;
             beatInterval = (60f / bpm) / audioSource.pitch;
-            startNewLevel();
-        }
 
-
-        // Win Condition
-        if (level == 25 && levelEnemies.Count == 0)
-        {
-            SceneManager.LoadScene("WinScreen");
+            // Check Win Condition
+            if (level > 25)
+            {
+                SceneManager.LoadScene("WinScreen");
+            }
+            else
+            {
+                startNewLevel();
+            }
         }
     }
 
