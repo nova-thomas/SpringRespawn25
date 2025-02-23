@@ -244,7 +244,7 @@ public void OnFire(InputAction.CallbackContext context)
         enemiesToNextLevel = levelManager.GetComponent<LevelManagerScript>().levelEnemies.Count;
         if (level % 5 == 0)
         {
-            health += 5;
+            health = 10;
             UpdateHealthUI();
         }
         UpdateUI();
