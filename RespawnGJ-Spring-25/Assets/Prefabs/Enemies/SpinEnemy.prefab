@@ -54,7 +54,7 @@ MonoBehaviour:
   RoF: 0
   canShoot: 1
   Bullet: {fileID: 8906487464026922425, guid: d34e7695134201148af280c606ff5e03, type: 3}
-  Item: {fileID: 0}
+  Item: {fileID: 6910289113810240194, guid: 39574cd3c7aa2094080285127cfa228a, type: 3}
   started: 0
   levelManager: {fileID: 0}
 --- !u!50 &6226379966297198638

@@ -23,12 +23,12 @@ public class PlayerBullet : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             //40% chance ------ put in enemy script for drop function
-            if (Random.value < 0.6f && itemPickupPrefab != null)
+          /*  if (Random.value < 0.6f && itemPickupPrefab != null)
             {
                 Instantiate(itemPickupPrefab, collision.transform.position, Quaternion.identity);
-            }
+            } */
             Destroy(gameObject);
-        }
+        } 
         else if (collision.CompareTag("Wall"))
         {
             Destroy(gameObject);
