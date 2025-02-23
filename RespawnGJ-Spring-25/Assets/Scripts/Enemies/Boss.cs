@@ -26,7 +26,7 @@ public class Boss : EnemyBase
         levelManager = GameObject.FindGameObjectWithTag("LevelManager");
         if (levelManager != null)
         {
-            RoF = 4 * levelManager.GetComponent<LevelManagerScript>().beatInterval * 4;
+            RoF = 4 * levelManager.GetComponent<LevelManagerScript>().beatInterval / 4;
         }
     }
 
