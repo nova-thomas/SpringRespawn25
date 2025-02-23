@@ -9,6 +9,8 @@ public class Boss : EnemyBase
     public GameObject levelManager;
 
     public float ringRadius = 2f;
+
+    public bool ringBool;
     void Awake()
     {
         Type = 3;
@@ -24,7 +26,7 @@ public class Boss : EnemyBase
         levelManager = GameObject.FindGameObjectWithTag("LevelManager");
         if (levelManager != null)
         {
-            RoF = levelManager.GetComponent<LevelManagerScript>().beatInterval * 4;
+            RoF = 4 * levelManager.GetComponent<LevelManagerScript>().beatInterval * 4;
         }
     }
 
@@ -36,7 +38,12 @@ public class Boss : EnemyBase
             if (canShoot)
             {
                 // Ring
-                SpawnRingOfBullets();
+                if (ringBool)
+                {
+                    SpawnRingOfBullets();
+                    ringBool = !ringBool;
+                }
+                
                 Fire();
             }
 

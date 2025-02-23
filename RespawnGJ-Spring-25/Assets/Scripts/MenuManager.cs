@@ -41,7 +41,7 @@ public class MenuManager : MonoBehaviour
     public void OnPlay()
     {
         audioSource.Stop();
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Story");
     }
 
     public void OnTutorial()
