@@ -60,7 +60,7 @@ public class EnemyBase : MonoBehaviour
         levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
         player.GetComponent<PlayerController>().EnemyDefeated();
 
-        if (Random.value < 0.6f && Item != null)
+        if (Random.value < 0.3f && Item != null)
         {
             Instantiate(Item, this.transform.position, Quaternion.identity);
         }
