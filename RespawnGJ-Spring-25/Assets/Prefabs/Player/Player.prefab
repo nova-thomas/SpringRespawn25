@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  health: 3
+  health: 10
   moveSpeed: 5
   bulletPrefab: {fileID: 8139724444477631083, guid: 571e673081287fd4688a7b26e06506f4, type: 3}
   frontPoint: {fileID: 3309880959850613956}
@@ -225,8 +225,8 @@ MonoBehaviour:
   cameraSmoothSpeed: 5
   levelText: {fileID: 0}
   progressBar: {fileID: 0}
-  shieldAmount: 3
-  bombAmount: 3
+  shieldAmount: 0
+  bombAmount: 0
   bombPrefab: {fileID: 4414605932448724033, guid: c36cd72c49a3d2e408996cf36b7387af, type: 3}
   shieldPrefab: {fileID: 2616911041000835014, guid: 64a2f7678fec0ac45b244cd2b5e4e7ea, type: 3}
   shieldText: {fileID: 0}
@@ -235,13 +235,19 @@ MonoBehaviour:
   itemSound: {fileID: 8300000, guid: c108b1c2a39bbfc479046c1b2d79b1db, type: 3}
   bombCountdownSound: {fileID: 8300000, guid: e0a11ecd7c78d3d4c86b2fc15eebb491, type: 3}
   bombExplosionSound: {fileID: 8300000, guid: b70e94dc826f23044b3bef91cbb1ac58, type: 3}
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: aa60c8f90bbf13a48a4954443ac7e891, type: 3}
   levelManager: {fileID: 0}
-  heartImages: []
-  fullHeart: {fileID: 0}
-  halfHeart: {fileID: 0}
+  heartImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 21300000, guid: 95116dd5e5e33fe4993d58df893bef4d, type: 3}
+  halfHeart: {fileID: 21300000, guid: e23a5a230889bd44bb10bd2dcfb87d1f, type: 3}
   deathScreenCanvas: {fileID: 0}
   mainCanvas: {fileID: 0}
+  deathLevel: {fileID: 0}
 --- !u!114 &5001953206706217340
 MonoBehaviour:
   m_ObjectHideFlags: 0
