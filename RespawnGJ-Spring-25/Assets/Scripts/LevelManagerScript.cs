@@ -212,16 +212,16 @@ public class LevelManagerScript : MonoBehaviour
         // Min 1, if level 1-10, 1 per level, if level 11-30, 1 per 4 levels, 31-50, 1 per 6
         if(level <= 10)
         {
-            numE1 = 1 + (level / 1) * 1;
-        } else if (level <= 30) 
+            numE1 = 0 + (level / 1) * 1;
+        } else if (level <= 20) 
         {
-            numE1 = 10 + (level / 4) * 1;
-        } else if (level <= 50)
+            numE1 = 10 + (level / 3) * 1;
+        } else if (level <= 25)
         {
-            numE1 = 15 + (level / 6) * 1;
+            numE1 = 13 + (level-20) / 2;
         }
-        numE2 = 4 + (level / 5) * 1; // Min 3, adding 2 every 10 levels
-        numE3 = 3 + (level / 15) * 3; // Min 3, adding 3 every 15 levels
+        numE2 = 2 + (level / 4) * 1; // Min 2, adding 1 every 4 levels
+        numE3 = 2 + (level / 5) * 1; // Min 2, adding 1 every 5 levels
 
         // Spawn Wave
         SpawnWave(numE1, numE2, numE3);
