@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -165,7 +166,11 @@ public class LevelManagerScript : MonoBehaviour
             levelEnemies.Add(boss);
 
             // Start boss behavior
-            boss.GetComponent<EnemyBase>().started = true;
+            EnemyBase script = boss.GetComponent<Boss>();
+            script.started = true;
+            script.numRing = 4 + (level / 5);
+            script.Speed = 3 + (level / 5);
+            script.Health = 10 + (level / 5) * 5;
         }
 
 

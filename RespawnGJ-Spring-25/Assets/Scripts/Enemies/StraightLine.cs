@@ -5,7 +5,7 @@ using UnityEngine;
 public class StraightLine : EnemyBase
 {
     public GameObject levelManager;
-    public GameObject Player;
+    public GameObject PlayerRef;
 
     void Awake()
     {
@@ -14,6 +14,7 @@ public class StraightLine : EnemyBase
         Speed = 6;
         started = false;
         canShoot = false;
+        PlayerRef = GameObject.FindGameObjectWithTag("Player");
 
         // Get BPM from LevelManager
         levelManager = GameObject.FindGameObjectWithTag("LevelManager");
@@ -38,17 +39,9 @@ public class StraightLine : EnemyBase
                 levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
                 Destroy(gameObject);
             }
-
-            if (Player == null)
-            {
-                Player = GameObject.FindGameObjectWithTag("Player");
-            }
-            else
-            {
-                Vector3 direction = Player.transform.position - transform.position;
-                float angle = Mathf.Atan2(direction.y, direction.x);
-                transform.rotation = Quaternion.EulerAngles(0, 0, angle - 90 * Mathf.Deg2Rad);
-            }
+            Vector3 direction = PlayerRef.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Convert to degrees
+            transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         }
     }
 }

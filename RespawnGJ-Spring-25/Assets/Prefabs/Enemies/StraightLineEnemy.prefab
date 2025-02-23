@@ -113,7 +113,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5323979692306571220}
@@ -212,8 +212,9 @@ MonoBehaviour:
   Bullet: {fileID: 8906487464026922425, guid: b19c31872b68d56419a9793e23b11510, type: 3}
   Item: {fileID: 0}
   started: 0
+  numRing: 0
   levelManager: {fileID: 0}
-  Player: {fileID: 0}
+  PlayerRef: {fileID: 0}
 --- !u!1 &8113658611520533280
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +243,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1648857778866710209}

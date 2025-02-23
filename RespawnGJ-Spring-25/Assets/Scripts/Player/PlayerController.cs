@@ -192,9 +192,12 @@ public void OnFire(InputAction.CallbackContext context)
         {
             if (enemy.CompareTag("Enemy"))
             {
-                if (enemy.GetComponent<EnemyBase>().started == true)
+                if (enemy.GetComponent<EnemyBase>().started == true && enemy.name != "BossEnemy(Clone)")
                 {
                     enemy.GetComponent<EnemyBase>().Health = 0;
+                } else if (enemy.GetComponent<EnemyBase>().started == true && enemy.name == "BossEnemy(Clone)")
+                {
+                    enemy.GetComponent<EnemyBase>().Health -= 3;
                 }
             }
         }

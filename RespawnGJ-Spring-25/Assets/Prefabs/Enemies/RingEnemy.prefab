@@ -56,7 +56,9 @@ MonoBehaviour:
   Bullet: {fileID: 8906487464026922425, guid: edb79b2824008494fbce25b6224d52a6, type: 3}
   Item: {fileID: 0}
   started: 0
+  numRing: 0
   levelManager: {fileID: 0}
+  ringRadius: 2
 --- !u!50 &2057781147909515189
 Rigidbody2D:
   serializedVersion: 4

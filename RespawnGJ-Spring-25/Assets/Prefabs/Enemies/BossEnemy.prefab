@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7833162453150777463}
-  - component: {fileID: 7016428052455419661}
   - component: {fileID: 2057781147909515189}
   - component: {fileID: 6435935433152593057}
+  - component: {fileID: -8277836524301314513}
   m_Layer: 7
   m_Name: BossEnemy
   m_TagString: Enemy
@@ -36,27 +36,6 @@ Transform:
   - {fileID: 7921437558345138511}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7016428052455419661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2198188382356193619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6899117ac80177b47a3a52ddbba6e379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 0
-  Health: 0
-  Speed: 0
-  RoF: 0
-  canShoot: 1
-  Bullet: {fileID: 8906487464026922425, guid: edb79b2824008494fbce25b6224d52a6, type: 3}
-  Item: {fileID: 0}
-  started: 0
-  levelManager: {fileID: 0}
 --- !u!50 &2057781147909515189
 Rigidbody2D:
   serializedVersion: 4
@@ -128,13 +107,38 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.25, y: 0.43359375}
+    - - {x: -0.25, y: 1.1835938}
       - {x: -0.5, y: 0}
-      - {x: -0.25, y: -0.43359375}
-      - {x: 0.25, y: -0.43359375}
+      - {x: -0.25, y: -0.68359375}
+      - {x: -0.004979134, y: -0.93359375}
+      - {x: 0.25, y: -0.68359375}
       - {x: 0.5, y: 0}
-      - {x: 0.25, y: 0.43359375}
+      - {x: 0.25, y: 1.1835938}
   m_UseDelaunayMesh: 0
+--- !u!114 &-8277836524301314513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198188382356193619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a8e25cedbc1154cb17f13e64d4c21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
+  Health: 0
+  Speed: 0
+  RoF: 0
+  canShoot: 1
+  Bullet: {fileID: 8906487464026922425, guid: edb79b2824008494fbce25b6224d52a6, type: 3}
+  Item: {fileID: 0}
+  started: 0
+  numRing: 0
+  PlayerRef: {fileID: 0}
+  levelManager: {fileID: 0}
+  ringRadius: 2
 --- !u!1 &4886501417114562800
 GameObject:
   m_ObjectHideFlags: 0

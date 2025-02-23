@@ -15,6 +15,9 @@ public class EnemyBase : MonoBehaviour
     public GameObject Item;
     public bool started;
 
+    // Boss
+    public int numRing;
+
     private SpriteRenderer spriteRenderer;
     private void Start()
     {

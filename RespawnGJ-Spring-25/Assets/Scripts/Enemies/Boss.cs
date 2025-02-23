@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ring : EnemyBase
+public class Boss : EnemyBase
 {
+    public GameObject PlayerRef;
+
     public GameObject levelManager;
 
     public float ringRadius = 2f;
     void Awake()
     {
-        Type = 2;
-        Health = 3;
-        Speed = 4;
+        Type = 3;
+        Health = 10;
+        Speed = 3;
         started = false;
         canShoot = false;
+        PlayerRef = GameObject.FindGameObjectWithTag("Player");
+
+
 
         // Get BPM from LevelManager
         levelManager = GameObject.FindGameObjectWithTag("LevelManager");
@@ -26,13 +31,13 @@ public class Ring : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        if(started)
+        if (started)
         {
             if (canShoot)
             {
+                // Ring
                 SpawnRingOfBullets();
-                canShoot = false;
-                StartCoroutine(Reload());
+                Fire();
             }
 
             if (Health <= 0)
@@ -40,13 +45,16 @@ public class Ring : EnemyBase
                 levelManager.GetComponent<LevelManagerScript>().RemoveEnemy(gameObject);
                 Destroy(gameObject);
             }
+
+            Vector3 direction = PlayerRef.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Convert to degrees
+            transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         }
     }
-
     private void SpawnRingOfBullets()
     {
-        float angleStep = 360f / 4; // Angle between each bullet
-        for (int i = 0; i < 4; i++)
+        float angleStep = 360f / numRing; // Angle between each bullet
+        for (int i = 0; i < numRing; i++)
         {
             // Calculate the position of each bullet in the ring
             float angle = i * angleStep * Mathf.Deg2Rad; // Convert to radians
