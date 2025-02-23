@@ -40,10 +40,10 @@ public class Boss : EnemyBase
                 // Ring
                 if (ringBool)
                 {
-                    SpawnRingOfBullets();
-                    ringBool = !ringBool;
+                    SpawnRingOfBullets();  
                 }
-                
+                ringBool = !ringBool;
+
                 Fire();
             }
 
