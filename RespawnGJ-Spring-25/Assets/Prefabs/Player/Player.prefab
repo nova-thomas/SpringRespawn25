@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 3551647945783380210}
   - component: {fileID: 6560541457324658702}
   - component: {fileID: 143812608420502113}
+  - component: {fileID: 6493707015410585626}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -166,7 +167,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -230,10 +231,12 @@ MonoBehaviour:
   shieldPrefab: {fileID: 2616911041000835014, guid: 64a2f7678fec0ac45b244cd2b5e4e7ea, type: 3}
   shieldText: {fileID: 0}
   bombText: {fileID: 0}
+  animator: {fileID: 0}
   itemSound: {fileID: 8300000, guid: c108b1c2a39bbfc479046c1b2d79b1db, type: 3}
   bombCountdownSound: {fileID: 8300000, guid: e0a11ecd7c78d3d4c86b2fc15eebb491, type: 3}
   bombExplosionSound: {fileID: 8300000, guid: b70e94dc826f23044b3bef91cbb1ac58, type: 3}
   deathSound: {fileID: 0}
+  levelManager: {fileID: 0}
   heartImages: []
   fullHeart: {fileID: 0}
   halfHeart: {fileID: 0}
@@ -527,3 +530,25 @@ MonoBehaviour:
   - {fileID: 21300010, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
   - {fileID: 21300012, guid: 78109cc5ff73d794d91e7283f89b4dbc, type: 3}
   frameRate: 0.1
+  levelManager: {fileID: 0}
+--- !u!95 &6493707015410585626
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796705292844108504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4be4db64aadba594fba8bb7ac7a24e43, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

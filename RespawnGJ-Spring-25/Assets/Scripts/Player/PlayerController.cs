@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     public TMP_Text shieldText;
     public TMP_Text bombText;
 
+    public Animator animator;
+
     public AudioClip itemSound;
     public AudioClip bombCountdownSound;
     public AudioClip bombExplosionSound;
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         levelManager = GameObject.FindGameObjectWithTag("LevelManager");
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         if (mainCanvas != null )
         {
             mainCanvas.SetActive(true);
@@ -100,6 +103,16 @@ public class PlayerController : MonoBehaviour
         Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         moveDirection = (mousePosition - (Vector2)transform.position).normalized;
         transform.position += (Vector3)moveDirection * moveSpeed * Time.deltaTime;
+
+        Vector3 mouse3D = new Vector3(mousePosition.x, mousePosition.y, 0);
+        if ((transform.position - mouse3D).magnitude < 2)
+        {
+            animator.SetBool("Walking", false);
+        }
+        else 
+        {
+            animator.SetBool("Walking", true);
+        }
 
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
