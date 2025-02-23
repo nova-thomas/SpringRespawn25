@@ -210,7 +210,7 @@ public class LevelManagerScript : MonoBehaviour
 
     public void startNewLevel()
     {
-        // Set number of enemies 
+        // Set number of enemies Max 15, 8, 6
         // Min 1, if level 1-10, 1 per level, if level 11-30, 1 per 4 levels, 31-50, 1 per 6
         if(level <= 10)
         {
