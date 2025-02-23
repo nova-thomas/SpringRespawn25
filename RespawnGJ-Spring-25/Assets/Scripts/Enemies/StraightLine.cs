@@ -20,7 +20,7 @@ public class StraightLine : EnemyBase
         levelManager = GameObject.FindGameObjectWithTag("LevelManager");
         if (levelManager != null)
         {
-            RoF = levelManager.GetComponent<LevelManagerScript>().beatInterval * 2;
+            RoF = levelManager.GetComponent<LevelManagerScript>().beatInterval * 4;
         }
     }
 
